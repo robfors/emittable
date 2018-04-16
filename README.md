@@ -1,16 +1,21 @@
 # Emittable
-A Ruby Gem to register and trigger events. It is a clone of `Vienna::Emittable`.
+A Ruby Gem to register and trigger events. It is a clone of `Vienna::Emittable`. It is thread safe.
 
 # Install
 `gem install emittable`
 
 # Example
-First `require 'emittable'` in your project. Then you can `include` `Emittable` in your classes.
+First `require 'emittable'` in your project. Then you can `include` `Emittable` in your classes. If you override `initialize` remember to call `super`.
 ```ruby
 require 'emittable'
 
 class A
   include Emittable
+  
+  def initialize(...)
+    ...
+    super
+  end
   
   ...
   ...
