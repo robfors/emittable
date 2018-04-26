@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'emittable'
-  s.version     = '0.1.0'
-  s.date        = '2018-04-15'
+  s.version     = '0.1.1'
+  s.date        = '2018-04-26'
   s.summary     = 'Event registering and triggering.'
   s.description = 'A simple event registering/triggering module to mix into classes.'
   s.authors     = 'Rob Fors'

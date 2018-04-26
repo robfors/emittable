@@ -4,6 +4,7 @@ require 'emittable/error'
 module Emittable
 
   def initialize(*args)
+    @emittable_setup = true
     @emittable_events = {}
     @emittable_mutex = Mutex.new
     super
@@ -58,6 +59,13 @@ module Emittable
     # we are outside of the mutex so any callbacks are able to trigger an event from
     #  this class without deadlock
     callbacks.each { |callback| callback.call(*args) }
+    nil
+  end
+  
+  private
+  
+  def check_emittable_setup
+    raise Error, "has 'super' been called on including class?" unless @emittable_setup
     nil
   end
   
