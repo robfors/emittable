@@ -17,6 +17,7 @@ module Emittable
   # @param [String, Symbol] name event name
   # @return handler
   def on(event_name, &callback)
+    check_emittable_setup
     raise ArgumentError, "event name must respond to 'to_s'" unless event_name.respond_to?(:to_s)
     event_name = event_name.to_s
     @emittable_mutex.synchronize do
@@ -28,6 +29,7 @@ module Emittable
   end
   
   def off(event_name, callback)
+    check_emittable_setup
     raise ArgumentError, "event name must respond to 'to_s'" unless event_name.respond_to?(:to_s)
     event_name = event_name.to_s
     @emittable_mutex.synchronize do
@@ -48,6 +50,7 @@ module Emittable
   #
   # @param [String, Symbol] name event name to trigger
   def trigger(event_name, *args)
+    check_emittable_setup
     raise ArgumentError, "event name must respond to 'to_s'" unless event_name.respond_to?(:to_s)
     event_name = event_name.to_s
     callbacks = nil
