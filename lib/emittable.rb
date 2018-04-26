@@ -55,9 +55,8 @@ module Emittable
     event_name = event_name.to_s
     callbacks = nil
     @emittable_mutex.synchronize do
-      callbacks = @emittable_events[event_name]
-      raise Error, 'no callbacks found for that event' unless callbacks
-      callbacks = callbacks.dup
+      callbacks = @emittable_events[event_name].to_a
+      callbacks = callbacks.dup # in case the array changes as we are iterating through the callbacks
     end
     # we are outside of the mutex so any callbacks are able to trigger an event from
     #  this class without deadlock

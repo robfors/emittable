@@ -61,12 +61,14 @@ RSpec.describe Emittable do
     end
     
     context "after removing a callback" do
-      it "should sould raise error" do
-        callback = proc {}
+      it "should sould not call it" do
+        $test = 0
+        callback = proc { $test += 1 }
         @a.on(:event, &callback)
         @a.trigger(:event)
         @a.off(:event, callback)
-        expect{ @a.trigger(:event) }.to raise_error(Emittable::Error)
+        @a.trigger(:event)
+        expect($test).to eql 1
       end
     end
     
