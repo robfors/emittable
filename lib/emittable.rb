@@ -7,7 +7,7 @@ module Emittable
     @emittable_setup = true
     @emittable_events = {}
     @emittable_mutex = Mutex.new
-    super
+    super(*args)
   end
   
   # Register a handler for the given event name.
