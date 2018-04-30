@@ -13,8 +13,8 @@ class A
   include Emittable
   
   def initialize(...)
-    ...
     super
+    ...
   end
   
   ...
