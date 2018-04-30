@@ -1,5 +1,5 @@
 # Emittable
-A Ruby Gem to register and trigger events. It is a clone of `Vienna::Emittable`. It is thread safe.
+A Ruby Gem to register and trigger events. It is based on `Vienna::Emittable`. It is thread safe.
 
 # Install
 `gem install emittable`
